@@ -1,0 +1,2274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+<title>RISE Profile | Growth Mindset Reflection & Facilitator Hub</title>
+<!-- QR Code generator library (bundled via CDN, lightweight & zero dependency) -->
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<style>
+:root {
+  --brand: #8f1232;
+  --brand-dark: #5d0b22;
+  --brand-light: #b83356;
+  --brand-soft: #f7e8ed;
+  --ink: #1f2937;
+  --ink-light: #4b5563;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --success: #059669;
+  --warning: #d97706;
+  --danger: #dc2626;
+  --radius: 20px;
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  background: linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+  min-height: 100vh;
+}
+.shell {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px 14px 60px;
+}
+@media (min-width: 640px) {
+  .shell { padding: 28px 24px 72px; }
+}
+
+/* Nav & Brand Bar */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.logo-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--brand);
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+.logo-badge {
+  background: var(--brand);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+.nav-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.icon-btn {
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--ink-light);
+  border-radius: 12px;
+  padding: 7px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.icon-btn:hover {
+  background: var(--brand-soft);
+  color: var(--brand);
+  border-color: #e5b9c6;
+}
+.brandbar {
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--brand-dark), var(--brand), #c94c6d);
+  margin-bottom: 20px;
+}
+
+/* Cards */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.05);
+  margin-bottom: 20px;
+}
+@media (min-width: 640px) {
+  .card { padding: 32px; }
+}
+
+/* Typography */
+h1 { margin: 0 0 6px; font-size: clamp(28px, 5vw, 42px); letter-spacing: -0.03em; color: #111827; }
+h2 { margin: 0 0 10px; font-size: clamp(22px, 3.6vw, 30px); letter-spacing: -0.02em; }
+h3 { margin: 0 0 8px; font-size: 18px; }
+p { line-height: 1.55; margin: 0 0 14px; color: var(--ink-light); font-size: 15px; }
+.kicker {
+  display: inline-block;
+  color: var(--brand);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 11px;
+  margin-bottom: 8px;
+}
+.sub { color: var(--muted); margin-top: 0; font-size: 15px; }
+
+/* Form inputs */
+label {
+  font-size: 13px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+input, select, textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  font-size: 15px;
+  outline: none;
+  background: #fff;
+  transition: all 0.15s;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(143, 18, 50, 0.12);
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+@media (min-width: 640px) {
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+}
+
+/* Callouts */
+.notice {
+  background: var(--brand-soft);
+  border-left: 4px solid var(--brand);
+  padding: 14px 16px;
+  border-radius: 12px;
+  margin: 18px 0;
+  color: #4b2632;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.notice strong { color: var(--brand-dark); }
+
+/* Buttons */
+.btnrow {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+button {
+  appearance: none;
+  border: 0;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 46px;
+}
+.primary {
+  background: var(--brand);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(143, 18, 50, 0.25);
+}
+.primary:hover:not(:disabled) {
+  background: var(--brand-dark);
+  transform: translateY(-1px);
+}
+.secondary {
+  background: #f3f4f6;
+  color: var(--ink);
+}
+.secondary:hover:not(:disabled) {
+  background: #e5e7eb;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+.btn-sm {
+  padding: 7px 12px;
+  font-size: 13px;
+  min-height: 34px;
+  border-radius: 8px;
+}
+
+/* Quiz Specific */
+.progress-wrap { margin: 6px 0 20px; }
+.progress-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.progress {
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.progress > div {
+  height: 100%;
+  background: linear-gradient(90deg, var(--brand), #cf3b63);
+  width: 0;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.question-dim-badge {
+  display: inline-block;
+  padding: 3px 9px;
+  background: var(--brand-soft);
+  color: var(--brand);
+  font-size: 11px;
+  font-weight: 800;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.question {
+  font-size: clamp(19px, 3.5vw, 24px);
+  font-weight: 800;
+  line-height: 1.35;
+  margin-bottom: 20px;
+  color: #111827;
+}
+.options { display: grid; gap: 11px; }
+.option {
+  border: 1.5px solid var(--line);
+  border-radius: 14px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  background: #fff;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  line-height: 1.45;
+  user-select: none;
+}
+.option:hover {
+  border-color: #c7a0ad;
+  background: #fffafb;
+  transform: translateY(-1px);
+}
+.option.selected {
+  border-color: var(--brand);
+  background: var(--brand-soft);
+  box-shadow: 0 2px 8px rgba(143, 18, 50, 0.08);
+}
+.option-marker {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  color: var(--ink);
+  font-weight: 800;
+  font-size: 13px;
+  display: grid;
+  place-items: center;
+  transition: all 0.15s;
+}
+.selected .option-marker {
+  background: var(--brand);
+  color: #fff;
+}
+
+/* Results section */
+.result-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-top: 20px;
+}
+@media (min-width: 600px) {
+  .result-grid { grid-template-columns: 1fr 1fr; }
+}
+.dim {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+}
+.dim-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: var(--brand);
+  font-weight: 900;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.dim-title { font-weight: 700; font-size: 15px; color: #111827; }
+.score { font-weight: 900; font-size: 22px; color: var(--brand); }
+.bar {
+  height: 10px;
+  background: #eef0f3;
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 12px 0 8px;
+}
+.bar > div {
+  height: 100%;
+  background: linear-gradient(90deg, var(--brand), #ce3b63);
+  border-radius: 999px;
+  transition: width 0.8s ease;
+}
+.level-tag {
+  font-size: 12px;
+  font-weight: 700;
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+.lvl-strength { background: #d1fae5; color: #065f46; }
+.lvl-adaptive { background: #e0f2fe; color: #075985; }
+.lvl-context { background: #fef3c7; color: #92400e; }
+.lvl-protective { background: #fee2e2; color: #991b1b; }
+
+.insight {
+  margin-top: 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px;
+  background: #fff;
+}
+.insight h3 {
+  color: var(--brand);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 17px;
+}
+.sync-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  color: var(--muted);
+  margin-top: 14px;
+}
+.sync-badge.synced { background: #d1fae5; color: #065f46; }
+.sync-badge.pending { background: #fef3c7; color: #92400e; }
+
+/* Facilitator Dashboard Styles */
+.dashboard-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+@media (min-width: 640px) {
+  .dashboard-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.stat-pill-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+@media (min-width: 768px) {
+  .stat-pill-group { grid-template-columns: repeat(4, 1fr); }
+}
+.stat-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+}
+.stat-card .val {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--brand);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+.stat-card .lbl {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Dashboard Tabs */
+.tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 20px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+.tab {
+  background: none;
+  border: none;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  white-space: nowrap;
+}
+.tab.active {
+  color: var(--brand);
+  border-bottom-color: var(--brand);
+}
+
+/* Facilitator Collective Bars & Radar */
+.collective-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.collective-dim-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 60px;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+@media (max-width: 500px) {
+  .collective-dim-row {
+    grid-template-columns: 1fr auto;
+    gap: 6px;
+  }
+  .collective-dim-row .dim-bar-wrap {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Roster Table */
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+}
+table.roster {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  text-align: left;
+}
+table.roster th {
+  background: #f8fafc;
+  padding: 12px 14px;
+  font-weight: 700;
+  color: var(--ink-light);
+  border-bottom: 1px solid var(--line);
+}
+table.roster td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #f1f5f9;
+  color: var(--ink);
+}
+table.roster tr:last-child td { border-bottom: none; }
+table.roster tr:hover td { background: #fafafa; }
+
+/* QR Code Display Modal / Box */
+.qr-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: #ffffff;
+  border: 2px dashed #e2e8f0;
+  border-radius: 18px;
+  text-align: center;
+}
+#qrcode {
+  padding: 14px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+  margin-bottom: 16px;
+}
+#qrcode img {
+  display: block;
+  margin: 0 auto;
+}
+.qr-url-box {
+  background: #f1f5f9;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-family: monospace;
+  font-size: 13px;
+  word-break: break-all;
+  margin-bottom: 12px;
+  max-width: 100%;
+}
+
+/* Modal Generic */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+.modal-box {
+  background: #fff;
+  border-radius: 20px;
+  max-width: 480px;
+  width: 100%;
+  padding: 28px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  animation: modalIn 0.2s ease-out;
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.96) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.hidden { display: none !important; }
+
+/* Group Report Printable Styles */
+#groupReport {
+  background: #fff;
+}
+.report-header {
+  border-bottom: 3px solid var(--brand);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.report-title {
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--brand-dark);
+  margin: 0;
+}
+.report-meta {
+  font-size: 13px;
+  color: var(--muted);
+  text-align: right;
+}
+.report-section {
+  margin-bottom: 24px;
+}
+.report-grid-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.report-summary-box {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  background: #fafafa;
+}
+.report-summary-box .val {
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--brand);
+}
+.report-summary-box .lbl {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink-light);
+}
+
+/* Print Specific */
+@media print {
+  @page {
+    margin: 1.5cm;
+    size: A4 portrait;
+  }
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .top-nav, .brandbar, .btnrow, .no-print, .tabs {
+    display: none !important;
+  }
+  .shell {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .card {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+  .dim, .stat-card, .collective-card, .insight, .report-summary-box, table.roster {
+    break-inside: avoid;
+    border-color: #cbd5e1 !important;
+  }
+  .report-header {
+    border-bottom: 2px solid #8f1232 !important;
+  }
+  .bar > div, .progress > div {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <!-- Top Navigation Bar -->
+  <header class="top-nav">
+    <a href="#" class="logo-tag" onclick="showIntro(); return false;">
+      <span class="logo-badge">RISE</span>
+      <span>Profile for Growth Mindset</span>
+    </a>
+    <div class="nav-actions">
+      <button class="icon-btn" id="qrQuickBtn" title="Show QR Code for Participants">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3h6v6H3V3zm12 0h6v6h-6V3zm-12 12h6v6H3v-6zm14 2h2v4h-4v-2h2v-2zm-2-2h-2v2h2v-2zm-6-2h2v2h-2v-2zm2 4v2h-2v-2h2zm2-2h2v2h-2v-2z"></path></svg>
+        QR Access
+      </button>
+      <button class="icon-btn" id="facilitatorBtn" title="Facilitator Dashboard">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+        Facilitator
+      </button>
+    </div>
+  </header>
+
+  <div class="brandbar"></div>
+
+  <!-- VIEW 1: PARTICIPANT INTRO -->
+  <section id="introView" class="card">
+    <div class="kicker">Growth Mindset Reflection</div>
+    <h1>RISE Profile</h1>
+    <p class="sub">A short reflection on how you respond to setbacks, feedback, challenge and change.</p>
+    
+    <div class="notice">
+      <strong>Important:</strong> This is a workshop reflection tool, not a validated psychometric assessment. There are no “perfect” answers. Choose the response closest to what you would actually do.
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <label for="nameInput">Your Name (optional)</label>
+        <input id="nameInput" placeholder="e.g. Alex Tan" autocomplete="name">
+      </div>
+      <div>
+        <label for="cohortInput">Workshop / Cohort Code</label>
+        <input id="cohortInput" placeholder="e.g. Leadership-Oct-2026" value="General">
+      </div>
+    </div>
+
+    <div class="btnrow">
+      <button class="primary" id="startBtn">
+        Start Reflection
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- VIEW 2: QUIZ -->
+  <section id="quizView" class="card hidden">
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span id="qMeta">Question 1 of 12</span>
+        <span id="cohortTagMeta" style="color:var(--brand)">Cohort: General</span>
+      </div>
+      <div class="progress"><div id="progressFill"></div></div>
+    </div>
+
+    <div id="dimTag" class="question-dim-badge">Response to Setbacks</div>
+    <div id="questionText" class="question">Loading question...</div>
+    <div id="optionsContainer" class="options"></div>
+
+    <div class="btnrow">
+      <button class="secondary" id="backBtn">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
+        Back
+      </button>
+      <button class="primary" id="nextBtn" disabled>
+        Next
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- VIEW 3: INDIVIDUAL RESULT -->
+  <section id="resultView" class="card hidden">
+    <div class="kicker">Your Reflection Snapshot</div>
+    <h2 id="resultTitle">Your RISE Profile</h2>
+    <p class="sub">These results reflect your current response tendencies, which can naturally shift depending on the situation, context, and level of support.</p>
+
+    <div class="result-grid" id="resultGrid"></div>
+
+    <div class="insight">
+      <h3>
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        Your Strength
+      </h3>
+      <p id="strengthText" style="font-size:16px;line-height:1.5;color:var(--ink)"></p>
+    </div>
+
+    <div class="insight">
+      <h3>
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+        Your Growth Opportunity
+      </h3>
+      <p id="opportunityText" style="font-size:16px;line-height:1.5;color:var(--ink)"></p>
+    </div>
+
+    <div class="insight">
+      <h3>
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+        Reflection
+      </h3>
+      <p id="reflectionText" style="font-size:16px;line-height:1.5;color:var(--brand-dark);font-weight:600;"></p>
+    </div>
+
+    <div id="syncStatusIndicator" class="sync-badge">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+      <span id="syncText">Saved to session records</span>
+    </div>
+
+    <p class="footer-note">Prototype scoring is designed for learning and facilitated reflection only. If this tool is later used for selection, appraisal, diagnosis or formal talent decisions, it should first undergo psychometric validation.</p>
+
+    <div class="btnrow no-print">
+      <button class="secondary" id="restartBtn">Retake Profile</button>
+      <button class="primary" id="printBtn">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+        Print / Save Individual PDF
+      </button>
+    </div>
+  </section>
+
+  <!-- VIEW 4: FACILITATOR DASHBOARD -->
+  <section id="facilitatorView" class="card hidden">
+    <div class="dashboard-header">
+      <div>
+        <div class="kicker">Facilitator Portal</div>
+        <h2>Collective Workshop Intelligence</h2>
+        <p class="sub" style="margin-bottom:0">Aggregated insights and real-time cohort distribution.</p>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="secondary btn-sm" id="exitFacilitatorBtn">Exit Dashboard</button>
+        <button class="primary btn-sm" id="printGroupReportBtn">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+          Print Group Report
+        </button>
+      </div>
+    </div>
+
+    <!-- Cohort Filter Bar -->
+    <div style="background:#f8fafc;padding:14px;border-radius:14px;border:1px solid var(--line);margin-bottom:20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+      <div style="flex:1;min-width:200px">
+        <label for="cohortFilterSelect" style="margin-bottom:4px">Filter by Cohort / Session:</label>
+        <select id="cohortFilterSelect" onchange="renderFacilitatorData()">
+          <option value="ALL">All Cohorts (Overall)</option>
+        </select>
+      </div>
+      <div>
+        <label style="margin-bottom:4px">&nbsp;</label>
+        <button class="secondary btn-sm" id="openQrModalBtn">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3h6v6H3V3zm12 0h6v6h-6V3zm-12 12h6v6H3v-6zm14 2h2v4h-4v-2h2v-2zm-2-2h-2v2h2v-2zm-6-2h2v2h-2v-2zm2 4v2h-2v-2h2zm2-2h2v2h-2v-2z"></path></svg>
+          Session QR & Link
+        </button>
+      </div>
+      <div>
+        <label style="margin-bottom:4px">&nbsp;</label>
+        <button class="secondary btn-sm" id="exportCsvBtn">Export CSV</button>
+      </div>
+    </div>
+
+    <!-- Stat Pills -->
+    <div class="stat-pill-group">
+      <div class="stat-card">
+        <div class="val" id="statParticipants">0</div>
+        <div class="lbl">Participants</div>
+      </div>
+      <div class="stat-card">
+        <div class="val" id="statAvgScore">0%</div>
+        <div class="lbl">Cohort Overall Avg</div>
+      </div>
+      <div class="stat-card">
+        <div class="val" id="statTopDim">-</div>
+        <div class="lbl">Strongest Pillar</div>
+      </div>
+      <div class="stat-card">
+        <div class="val" id="statGrowthDim">-</div>
+        <div class="lbl">Primary Growth Area</div>
+      </div>
+    </div>
+
+    <!-- Sub tabs -->
+    <div class="tabs">
+      <button class="tab active" data-tab="collectiveTab">Collective Reflection (Projector View)</button>
+      <button class="tab" data-tab="facilitatorGuideTab">Facilitator Debrief Guide</button>
+      <button class="tab" data-tab="rosterTab">Participant Roster</button>
+      <button class="tab" data-tab="settingsTab">Google Sheets & Settings</button>
+    </div>
+
+    <!-- Tab 1: Collective Reflection (Projector & Audience View) -->
+    <div id="collectiveTab" class="tab-pane">
+      <div class="collective-card">
+        <h3 style="margin-bottom:6px;font-size:20px;">Where are we strong? Where can we grow?</h3>
+        <p class="sub" style="font-size:14px;margin-bottom:16px;">Collective dimension profile across our group:</p>
+        
+        <div id="collectiveDimensionBars">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <!-- Collective Insight Panel (Audience Facing) -->
+        <div class="collective-card" style="border-left: 4px solid var(--brand);">
+          <h3 style="margin-bottom:12px;font-size:18px;color:var(--brand-dark);">Collective Insight</h3>
+          <div id="collectiveInsightPanel" style="font-size:14px;line-height:1.6;color:var(--ink);">
+            Gathering group responses...
+          </div>
+        </div>
+
+        <div class="collective-card">
+          <h3 style="margin-bottom:12px;font-size:18px;">How Our Responses Are Distributed</h3>
+          <p class="sub" style="font-size:13px;margin-bottom:12px;">Spread across reflection tendencies:</p>
+          <div id="distributionContainer" style="display:grid;gap:8px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 1B: Facilitator Debrief Guide (Facilitator-Only View) -->
+    <div id="facilitatorGuideTab" class="tab-pane hidden">
+      <!-- Facilitator-Only Score Interpretation Bands Card -->
+      <div class="collective-card" style="border-left: 4px solid var(--brand); margin-bottom: 16px;">
+        <div class="kicker" style="color:var(--brand-dark);">Facilitator Reference Only</div>
+        <h3 style="margin-top:0;margin-bottom:6px;font-size:18px;color:var(--brand);">RISE Score Interpretation Bands</h3>
+        <p class="sub" style="font-size:13px;margin-bottom:14px;">Use these score ranges to interpret individual and cohort dimension results during facilitation:</p>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:10px;margin-bottom:12px;">
+          <div style="border:1px solid var(--line);border-radius:10px;padding:12px;background:#f8fafc;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <span class="level-tag lvl-strength">Strong Growth</span>
+              <strong style="color:var(--brand);font-size:14px;">82–100%</strong>
+            </div>
+            <div style="font-size:12px;color:var(--ink-light);line-height:1.4;">Often responds by learning, adapting and moving forward.</div>
+          </div>
+
+          <div style="border:1px solid var(--line);border-radius:10px;padding:12px;background:#f8fafc;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <span class="level-tag lvl-adaptive">Usually Adaptive</span>
+              <strong style="color:var(--brand);font-size:14px;">68–81%</strong>
+            </div>
+            <div style="font-size:12px;color:var(--ink-light);line-height:1.4;">Usually responds positively and adjusts when needed.</div>
+          </div>
+
+          <div style="border:1px solid var(--line);border-radius:10px;padding:12px;background:#f8fafc;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <span class="level-tag lvl-context">Depends on the Situation</span>
+              <strong style="color:var(--brand);font-size:14px;">52–67%</strong>
+            </div>
+            <div style="font-size:12px;color:var(--ink-light);line-height:1.4;">Response may change depending on the situation, level of risk or uncertainty.</div>
+          </div>
+
+          <div style="border:1px solid var(--line);border-radius:10px;padding:12px;background:#f8fafc;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <span class="level-tag lvl-protective">More Cautious Under Pressure</span>
+              <strong style="color:var(--brand);font-size:14px;">Below 52%</strong>
+            </div>
+            <div style="font-size:12px;color:var(--ink-light);line-height:1.4;">May prefer more certainty, time or support before moving forward.</div>
+          </div>
+        </div>
+
+        <div style="background:#fff8fa;border:1px solid #f2d5de;border-radius:8px;padding:10px 14px;font-size:13px;color:var(--brand-dark);line-height:1.45;">
+          <strong>Important Facilitator Principle:</strong> Use these bands as a reflection guide only. They are not fixed labels or psychometric classifications. Participant-facing views display only the behavioural category labels and RISE dimension results to avoid score comparison between participants. Keep discussions focused on situational tendencies rather than personality types.
+        </div>
+      </div>
+
+      <div class="collective-card" style="background:#faf8f9;border-color:#ecd4db;">
+        <div class="kicker" style="color:var(--brand-dark);">Facilitator-Only Reference</div>
+        <h3 style="margin-bottom:8px;font-size:20px;color:var(--brand);">Workshop Debrief Blueprint & Probing Questions</h3>
+        <p class="sub" style="font-size:14px;margin-bottom:20px;">Use these private notes, coaching questions, and activity ideas during your group discussion. (Do not project this tab to participants).</p>
+        
+        <div id="facilitatorDebriefContent" style="display:grid;gap:16px;">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 2: Participant Roster -->
+    <div id="rosterTab" class="tab-pane hidden">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <input id="rosterSearchInput" placeholder="Search participant name..." style="max-width:300px;padding:8px 12px;font-size:13px;" oninput="renderRosterTable()">
+        <span class="sub" id="rosterCount" style="margin:0;font-size:13px;">0 records</span>
+      </div>
+      <div class="table-wrap">
+        <table class="roster">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Cohort</th>
+              <th>R %</th>
+              <th>I %</th>
+              <th>S %</th>
+              <th>E %</th>
+              <th>Overall</th>
+              <th>Strongest</th>
+              <th>Submitted</th>
+            </tr>
+          </thead>
+          <tbody id="rosterTbody">
+            <tr><td colspan="9" style="text-align:center;padding:24px;color:var(--muted)">No responses recorded yet. Share the QR code with your cohort!</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Tab 3: Google Sheets & Settings -->
+    <div id="settingsTab" class="tab-pane hidden">
+      <div class="collective-card">
+        <h3>Google Sheets Sync Integration</h3>
+        <p class="sub">Link submissions in real-time to your own Google Sheet using a free Google Apps Script webhook.</p>
+        
+        <div style="margin-bottom:16px">
+          <label for="sheetWebhookUrl">Google Apps Script Web App URL</label>
+          <input id="sheetWebhookUrl" placeholder="https://script.google.com/macros/s/.../exec">
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button class="primary btn-sm" id="saveSheetUrlBtn">Save Endpoint</button>
+            <button class="secondary btn-sm" id="testSheetBtn">Send Test Ping</button>
+            <button class="secondary btn-sm" id="syncPendingBtn">Sync Offline Records</button>
+          </div>
+          <span id="sheetTestResult" style="font-size:13px;margin-top:6px;display:block"></span>
+        </div>
+
+        <details style="background:#f8fafc;padding:12px 14px;border-radius:12px;border:1px solid var(--line);font-size:13px">
+          <summary style="font-weight:700;cursor:pointer;color:var(--brand)">How to set up your Google Sheet in 2 minutes (Click to expand)</summary>
+          <ol style="padding-left:18px;margin-top:10px;line-height:1.6">
+            <li>Create a new spreadsheet at <a href="https://sheets.new" target="_blank" style="color:var(--brand)">sheets.new</a>.</li>
+            <li>In the top menu, click <strong>Extensions > Apps Script</strong>.</li>
+            <li>Paste the ready-made script code provided below into the editor.</li>
+            <li>Click <strong>Deploy > New deployment</strong>.</li>
+            <li>Select type <strong>Web app</strong>, set <em>Who has access</em> to <strong>Anyone</strong>, and click <strong>Deploy</strong>.</li>
+            <li>Copy the <em>Web app URL</em> and paste it into the box above!</li>
+          </ol>
+          <button class="secondary btn-sm" id="copyAppsScriptBtn" style="margin-top:6px">Copy Apps Script Code to Clipboard</button>
+        </details>
+      </div>
+
+      <div class="collective-card">
+        <h3>Dashboard Security & Data Management</h3>
+        <div class="grid-2">
+          <div>
+            <label for="newAdminPass">Change Facilitator Password</label>
+            <input id="newAdminPass" type="password" placeholder="New password">
+            <button class="secondary btn-sm" id="savePassBtn" style="margin-top:8px">Update Password</button>
+          </div>
+          <div>
+            <label>Data Management</label>
+            <p class="sub" style="font-size:13px;margin-bottom:8px">Generate mock data for demonstration or clear all stored participants.</p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <button class="secondary btn-sm" id="generateDemoDataBtn">Load 12 Sample Responses</button>
+              <button class="secondary btn-sm" id="clearAllDataBtn" style="color:var(--danger)">Clear All Responses</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIEW 5: PRINTABLE GROUP REPORT (Visible during print or when triggered) -->
+  <section id="groupReportModal" class="modal-overlay hidden">
+    <div class="modal-box" style="max-width:850px;max-height:92vh;overflow-y:auto;padding:32px;">
+      <div class="no-print" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+        <span class="kicker" style="margin:0">Print Preview</span>
+        <div style="display:flex;gap:8px">
+          <button class="primary btn-sm" onclick="window.print()">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+            Print / PDF
+          </button>
+          <button class="secondary btn-sm" onclick="$('groupReportModal').classList.add('hidden')">Close</button>
+        </div>
+      </div>
+
+      <div id="groupReportContent">
+        <!-- Rendered by generatePrintableGroupReport() -->
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL: FACILITATOR PASSWORD AUTH -->
+  <div id="passwordModal" class="modal-overlay hidden">
+    <div class="modal-box">
+      <div class="kicker">Security Verification</div>
+      <h3 style="margin-top:0">Facilitator Access</h3>
+      <p class="sub">Enter your facilitator password to access collective session analytics and settings.</p>
+      
+      <form id="passwordForm" onsubmit="handlePasswordSubmit(event)">
+        <div style="margin-bottom:14px">
+          <label for="facilitatorPasswordInput">Password</label>
+          <input type="password" id="facilitatorPasswordInput" placeholder="Enter password (default: rise2026)" autofocus>
+          <div id="passwordError" style="color:var(--danger);font-size:13px;margin-top:6px;display:none;">Incorrect password. Please try again.</div>
+        </div>
+        <div class="btnrow" style="margin-top:14px">
+          <button type="button" class="secondary" onclick="$('passwordModal').classList.add('hidden')">Cancel</button>
+          <button type="submit" class="primary">Unlock Dashboard</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: QR CODE ACCESS GENERATOR -->
+  <div id="qrModal" class="modal-overlay hidden">
+    <div class="modal-box">
+      <div class="kicker">Live Workshop Joining</div>
+      <h3 style="margin-top:0">Participant QR Code</h3>
+      <p class="sub">Project this on your presentation screen or share so participants can scan with their phone cameras.</p>
+      
+      <div class="qr-container">
+        <div id="qrcode"></div>
+        <div class="qr-url-box" id="qrTargetUrl">Generating link...</div>
+        <div id="qrProtocolNotice" style="display:none;font-size:12px;color:var(--warning);background:#fffbeb;padding:8px 12px;border-radius:8px;border:1px solid #fde68a;margin-bottom:10px;text-align:left;">
+          ⚠️ <strong>Local device link detected:</strong> Phones cannot open <code>file://</code> or <code>localhost</code>. Host this file on <strong>GitHub Pages</strong> or enter your published web link below.
+        </div>
+        <div style="width:100%;text-align:left;margin-top:6px;">
+          <label for="customShareUrlInput" style="font-size:12px;color:var(--ink);margin-bottom:4px;">Custom Live URL (e.g. GitHub Pages link):</label>
+          <div style="display:flex;gap:6px;">
+            <input id="customShareUrlInput" placeholder="https://username.github.io/rise-profile" style="font-size:13px;padding:8px 10px;">
+            <button class="primary btn-sm" id="applyCustomUrlBtn" style="white-space:nowrap;">Update QR</button>
+          </div>
+        </div>
+        <div style="font-size:13px;color:var(--muted);margin-top:10px;">Current Cohort: <strong id="qrCohortBadge" style="color:var(--brand)">General</strong></div>
+      </div>
+
+      <div class="btnrow" style="margin-top:16px">
+        <button class="secondary btn-sm" id="copyShareLinkBtn">Copy Link</button>
+        <button class="primary btn-sm" onclick="$('qrModal').classList.add('hidden')">Done</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ==========================================
+// 1. DATA & PSYCHOMETRIC DEFINITIONS
+// ==========================================
+const DIMENSIONS = {
+  R: {
+    name: "Response to Setbacks",
+    strength: "You naturally look for what to learn when things do not go to plan and quickly adjust your approach.",
+    growth: "Pause before reacting or defending. Look for one lesson you can act on immediately.",
+    prompt: "Think of a recent setback. What is one practical thing you could do differently next time?",
+    collectiveStrength: "Response to Setbacks is currently our strongest RISE dimension. This suggests the group is generally confident in learning from setbacks and moving forward.",
+    collectiveGrowth: "Response to Setbacks is currently our lowest dimension. This suggests we may benefit from looking for lessons sooner before explaining or defending what happened.",
+    collectivePrompt: "When something unexpected happens, what would help us shift faster from reaction to learning?",
+    color: "#8f1232"
+  },
+  I: {
+    name: "Input & Feedback",
+    strength: "You are comfortable learning from feedback and different perspectives to make your work better.",
+    growth: "Ask for feedback before your work is finished, rather than waiting until everything is finalized.",
+    prompt: "Who is someone whose viewpoint could help you see something you might be missing right now?",
+    collectiveStrength: "Input & Feedback is currently our strongest RISE dimension. This suggests the group actively welcomes different views and constructive input.",
+    collectiveGrowth: "Input & Feedback is currently our lowest dimension. This suggests we may benefit from seeking and testing outside perspectives earlier in our work.",
+    collectivePrompt: "What would make it safer and easier for us to ask for honest input early and often?",
+    color: "#a82043"
+  },
+  S: {
+    name: "Stretch Through Challenge",
+    strength: "You are willing to step into unfamiliar work and build new skills by doing them.",
+    growth: "Take small steps before you feel fully ready. Learn and adjust as you go.",
+    prompt: "What is one situation where you could start before everything feels certain?",
+    collectiveStrength: "Stretch Through Challenge is currently our strongest RISE dimension. This suggests the group is willing to step outside familiar comfort zones.",
+    collectiveGrowth: "Stretch Through Challenge is currently our lowest dimension. This suggests we may benefit from becoming more comfortable learning in unfamiliar situations.",
+    collectivePrompt: "What would help us stretch beyond what is familiar while still managing risk responsibly?",
+    color: "#c0355a"
+  },
+  E: {
+    name: "Experimentation & Change",
+    strength: "You are open to trying new methods and testing ideas through simple, real-world trials.",
+    growth: "Replace waiting for full certainty with a quick, low-risk test to see what works.",
+    prompt: "What is one simple test you could run this week instead of debating what might happen?",
+    collectiveStrength: "Experimentation & Change is currently our strongest RISE dimension. This suggests the group adapts well and is willing to test new ideas.",
+    collectiveGrowth: "Experimentation & Change is currently our lowest dimension. This suggests we may benefit from trying small, low-risk experiments when faced with change.",
+    collectivePrompt: "What is one small, low-risk experiment our team could run together this month?",
+    color: "#d44c71"
+  }
+};
+
+const QUESTIONS = [
+  {
+    id: "R1", dim: "R",
+    text: "A high-stakes project you led delivers a disappointing final outcome. What are you most likely to do first?",
+    options: [
+      { t: "Conduct a focused review to understand what worked, what did not, and what should change next.", s: 4 },
+      { t: "Take a short step back to clear your head before deciding the next move.", s: 3 },
+      { t: "Focus mainly on the external factors that disrupted the original plan.", s: 1 },
+      { t: "Move immediately to a new approach so the team can recover quickly.", s: 2 }
+    ]
+  },
+  {
+    id: "R2", dim: "R",
+    text: "Your initial approach to a complex, time-sensitive problem is not working as expected. What would you usually do?",
+    options: [
+      { t: "Diagnose where the approach broke down, then adjust based on what you learn.", s: 4 },
+      { t: "Return to a familiar troubleshooting method that has worked before.", s: 2 },
+      { t: "Consult someone who has handled a similar roadblock and use their input to adapt.", s: 4 },
+      { t: "Pause the work until clearer guidance or more data becomes available.", s: 1 }
+    ]
+  },
+  {
+    id: "R3", dim: "R",
+    text: "You receive performance results that fall well below your personal standards. Which internal response is closest to you?",
+    options: [
+      { t: "I look for what the result can teach me about my approach.", s: 4 },
+      { t: "I review my execution to identify where I could improve.", s: 4 },
+      { t: "I focus quickly on tactical steps to recover lost ground.", s: 3 },
+      { t: "I begin to question whether I am naturally suited to this type of work.", s: 1 }
+    ]
+  },
+  {
+    id: "I1", dim: "I",
+    text: "Your manager gives you critical feedback that you strongly disagree with. What are you most likely to do first?",
+    options: [
+      { t: "Ask for specific examples so you can understand the feedback more clearly.", s: 4 },
+      { t: "Reflect on it privately before deciding what you can learn from it.", s: 3 },
+      { t: "Explain the rationale and constraints behind your original approach.", s: 2 },
+      { t: "Check with a trusted peer to see whether they notice the same issue.", s: 3 }
+    ]
+  },
+  {
+    id: "I2", dim: "I",
+    text: "A colleague publicly challenges a core part of your proposal during an important meeting. What would you normally do?",
+    options: [
+      { t: "Ask what specific risk or assumption concerns them most, then explore it.", s: 4 },
+      { t: "Listen during the meeting and arrange a follow-up conversation afterwards.", s: 3 },
+      { t: "Defend your position immediately with the evidence supporting your proposal.", s: 2 },
+      { t: "Compare their counter-suggestion with your own before responding.", s: 3 }
+    ]
+  },
+  {
+    id: "I3", dim: "I",
+    text: "You are deep into an important deliverable, but leadership has provided no interim feedback. What are you most likely to do?",
+    options: [
+      { t: "Proactively schedule a checkpoint to test assumptions before going further.", s: 4 },
+      { t: "Audit the work carefully against the original brief and continue.", s: 3 },
+      { t: "Wait until the work is fully polished before asking for formal review.", s: 2 },
+      { t: "Proceed as planned because no feedback usually means there is no issue.", s: 1 }
+    ]
+  },
+  {
+    id: "S1", dim: "S",
+    text: "You are asked to lead a high-visibility initiative in an area where your team has little prior experience. What is your first instinct?",
+    options: [
+      { t: "Step in and begin learning what is needed while the work takes shape.", s: 4 },
+      { t: "Map the risks and secure the support needed before committing fully.", s: 4 },
+      { t: "Partner with a team that has relevant experience and learn alongside them.", s: 4 },
+      { t: "Assess whether the delivery risk is too high given the team's current capability.", s: 2 }
+    ]
+  },
+  {
+    id: "S2", dim: "S",
+    text: "You are handed an open-ended problem with no precedent or clear formula for success. What are you most likely to do?",
+    options: [
+      { t: "Create a rough first version or prototype and learn from what happens.", s: 4 },
+      { t: "Explore examples from other contexts to generate possible approaches.", s: 4 },
+      { t: "Clarify the problem boundaries thoroughly before testing a solution.", s: 3 },
+      { t: "Wait for an experienced expert to recommend the best direction.", s: 1 }
+    ]
+  },
+  {
+    id: "S3", dim: "S",
+    text: "A new project requires capabilities you have not yet developed. How would you typically respond?",
+    options: [
+      { t: "Begin the work and deliberately learn the capability as I go.", s: 4 },
+      { t: "Identify the skill gap and create a focused learning plan while progressing.", s: 4 },
+      { t: "Work alongside someone more experienced until I can take on more independently.", s: 3 },
+      { t: "Prefer to build confidence in the skill before becoming accountable for the result.", s: 2 }
+    ]
+  },
+  {
+    id: "E1", dim: "E",
+    text: "Your organisation introduces a new workflow that significantly changes your daily routine. What are you most likely to do first?",
+    options: [
+      { t: "Test it on a small, low-risk task to understand what works and what creates friction.", s: 4 },
+      { t: "Understand the business reason for the change before adjusting my routine.", s: 3 },
+      { t: "Observe early adopters first and adapt once I can see how they use it.", s: 2 },
+      { t: "Continue with the current method until the new workflow becomes mandatory.", s: 1 }
+    ]
+  },
+  {
+    id: "E2", dim: "E",
+    text: "A colleague proposes an untested approach to a recurring team bottleneck. What would you usually do?",
+    options: [
+      { t: "Support a small, low-risk test and use the result to decide what to do next.", s: 4 },
+      { t: "Ask what specific problem the idea is intended to solve before testing it.", s: 3 },
+      { t: "Assess the risks and benefits carefully before agreeing to a trial.", s: 2 },
+      { t: "Prefer an established method with a more predictable outcome.", s: 1 }
+    ]
+  },
+  {
+    id: "E3", dim: "E",
+    text: "A new digital tool could potentially improve your work, but you have never used it before. What are you most likely to do?",
+    options: [
+      { t: "Try it on a low-risk task and learn through hands-on use.", s: 4 },
+      { t: "Read enough to understand how it works, then test it for myself.", s: 4 },
+      { t: "Ask someone experienced to demonstrate how they use it before I try.", s: 3 },
+      { t: "Wait until there is a clear organisational expectation to adopt it.", s: 1 }
+    ]
+  }
+];
+
+// ==========================================
+// 2. STATE & STORAGE MANAGEMENT
+// ==========================================
+const STORAGE_KEYS = {
+  RESPONSES: "rise_responses_v1",
+  PASSWORD: "rise_facilitator_password",
+  WEBHOOK: "rise_google_sheets_webhook",
+  PENDING_SYNC: "rise_pending_sync"
+};
+
+let quizOrder = [];
+let quizAnswers = {};
+let quizCursor = 0;
+let currentCohort = "General";
+let qrInstance = null;
+
+const $ = id => document.getElementById(id);
+
+// Load persisted configs
+function getStoredPassword() {
+  return localStorage.getItem(STORAGE_KEYS.PASSWORD) || "rise2026";
+}
+function getStoredWebhook() {
+  return localStorage.getItem(STORAGE_KEYS.WEBHOOK) || "https://script.google.com/macros/s/AKfycbyBuN6PJO5b75Qz62xMTB_UYNy1TBMulxAEd7iCnLW482007TB_gMiINAQuttWwRaLg/exec";
+}
+function getAllResponses() {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEYS.RESPONSES)) || [];
+  } catch(e) {
+    return [];
+  }
+}
+function saveResponses(list) {
+  localStorage.setItem(STORAGE_KEYS.RESPONSES, JSON.stringify(list));
+}
+
+// Check URL Params for cohort prepopulation
+window.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  if (params.has("cohort")) {
+    const c = params.get("cohort").trim();
+    if (c) {
+      currentCohort = c;
+      $('cohortInput').value = c;
+    }
+  }
+  // If facilitator param or direct hash
+  if (window.location.hash === "#facilitator") {
+    promptFacilitator();
+  }
+
+  // Set default webhook in settings if present
+  if ($('sheetWebhookUrl')) {
+    $('sheetWebhookUrl').value = getStoredWebhook();
+  }
+});
+
+// ==========================================
+// 3. PARTICIPANT QUIZ ENGINE
+// ==========================================
+function shuffle(a) {
+  a = [...a];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function showIntro() {
+  $('quizView').classList.add('hidden');
+  $('resultView').classList.add('hidden');
+  $('facilitatorView').classList.add('hidden');
+  $('introView').classList.remove('hidden');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function startQuiz() {
+  currentCohort = ($('cohortInput').value || "General").trim();
+  $('cohortTagMeta').textContent = `Cohort: ${currentCohort}`;
+
+  QUESTIONS.forEach(q => delete q._presented);
+  quizOrder = shuffle(QUESTIONS.map(q => q.id));
+  quizAnswers = {};
+  quizCursor = 0;
+
+  $('introView').classList.add('hidden');
+  $('resultView').classList.add('hidden');
+  $('facilitatorView').classList.add('hidden');
+  $('quizView').classList.remove('hidden');
+  renderQuestion();
+}
+
+function getQuestion() {
+  return QUESTIONS.find(q => q.id === quizOrder[quizCursor]);
+}
+
+function renderQuestion() {
+  const q = getQuestion();
+  $('qMeta').textContent = `Question ${quizCursor + 1} of ${quizOrder.length}`;
+  $('progressFill').style.width = `${((quizCursor + 1) / quizOrder.length) * 100}%`;
+  $('dimTag').textContent = DIMENSIONS[q.dim].name;
+  $('questionText').textContent = q.text;
+  
+  const container = $('optionsContainer');
+  container.innerHTML = '';
+
+  const presented = q._presented || (q._presented = shuffle(q.options.map((o, i) => ({ ...o, originalIndex: i }))));
+  
+  presented.forEach((opt, idx) => {
+    const card = document.createElement('div');
+    card.className = 'option';
+    card.innerHTML = `
+      <div class="option-marker">${String.fromCharCode(65 + idx)}</div>
+      <div style="flex:1">${opt.t}</div>
+    `;
+
+    if (quizAnswers[q.id]?.originalIndex === opt.originalIndex) {
+      card.classList.add('selected');
+    }
+
+    card.onclick = () => {
+      quizAnswers[q.id] = { score: opt.s, originalIndex: opt.originalIndex };
+      [...container.children].forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      $('nextBtn').disabled = false;
+    };
+
+    container.appendChild(card);
+  });
+
+  $('backBtn').disabled = (quizCursor === 0);
+  $('nextBtn').textContent = (quizCursor === quizOrder.length - 1) ? 'View My Reflection' : 'Next';
+  $('nextBtn').disabled = !quizAnswers[q.id];
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function nextQuestion() {
+  if (quizCursor < quizOrder.length - 1) {
+    quizCursor++;
+    renderQuestion();
+  } else {
+    finishQuizAndShowResults();
+  }
+}
+
+function backQuestion() {
+  if (quizCursor > 0) {
+    quizCursor--;
+    renderQuestion();
+  }
+}
+
+const RESPONSE_LABELS = {
+  strong: {
+    label: 'Strong Growth',
+    desc: 'Often responds by learning, adapting and moving forward.',
+    cls: 'lvl-strength'
+  },
+  adaptive: {
+    label: 'Usually Adaptive',
+    desc: 'Usually responds positively and adjusts when needed.',
+    cls: 'lvl-adaptive'
+  },
+  situational: {
+    label: 'Depends on the Situation',
+    desc: 'Response may change depending on the situation, level of risk or uncertainty.',
+    cls: 'lvl-context'
+  },
+  cautious: {
+    label: 'More Cautious Under Pressure',
+    desc: 'May prefer more certainty, time or support before moving forward.',
+    cls: 'lvl-protective'
+  }
+};
+
+function levelFromPct(p) {
+  if (p >= 82) return RESPONSE_LABELS.strong;
+  if (p >= 68) return RESPONSE_LABELS.adaptive;
+  if (p >= 52) return RESPONSE_LABELS.situational;
+  return RESPONSE_LABELS.cautious;
+}
+
+// Calculate scores, save submission, dispatch to Google Sheets
+function finishQuizAndShowResults() {
+  $('quizView').classList.add('hidden');
+  $('resultView').classList.remove('hidden');
+
+  const totals = { R: 0, I: 0, S: 0, E: 0 };
+  const counts = { R: 0, I: 0, S: 0, E: 0 };
+
+  QUESTIONS.forEach(q => {
+    totals[q.dim] += quizAnswers[q.id]?.score || 0;
+    counts[q.dim]++;
+  });
+
+  const pct = {};
+  Object.keys(totals).forEach(d => {
+    pct[d] = Math.round(totals[d] / (counts[d] * 4) * 100);
+  });
+
+  const participantName = $('nameInput').value.trim() || 'Anonymous';
+  $('resultTitle').textContent = participantName === 'Anonymous' ? 'Your RISE Profile' : `${participantName}'s RISE Profile`;
+
+  // Render 4 dimension cards with clear, non-judgmental explanations
+  const grid = $('resultGrid');
+  grid.innerHTML = '';
+  Object.keys(DIMENSIONS).forEach(d => {
+    const lvl = levelFromPct(pct[d]);
+    const item = document.createElement('div');
+    item.className = 'dim';
+    item.innerHTML = `
+      <div class="dim-head">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="badge" style="background:${DIMENSIONS[d].color}">${d}</div>
+          <div>
+            <div class="dim-title">${DIMENSIONS[d].name}</div>
+            <span class="level-tag ${lvl.cls}">${lvl.label}</span>
+          </div>
+        </div>
+        <div class="score">${pct[d]}%</div>
+      </div>
+      <div class="bar"><div style="width:${pct[d]}%;background:${DIMENSIONS[d].color}"></div></div>
+      <div style="font-size:13px;color:var(--ink-light);margin-top:6px;line-height:1.4;">
+        ${lvl.desc}
+      </div>
+    `;
+    grid.appendChild(item);
+  });
+
+  const sorted = Object.entries(pct).sort((a, b) => b[1] - a[1]);
+  const strongest = sorted[0][0];
+  const lowest = sorted[sorted.length - 1][0];
+
+  $('strengthText').textContent = DIMENSIONS[strongest].strength;
+  $('opportunityText').textContent = DIMENSIONS[lowest].growth;
+  $('reflectionText').textContent = DIMENSIONS[lowest].prompt;
+
+  // Prepare submission record
+  const submission = {
+    id: "sub_" + Date.now() + "_" + Math.floor(Math.random()*1000),
+    timestamp: new Date().toISOString(),
+    name: participantName,
+    cohort: currentCohort,
+    percentages: pct,
+    pctR: pct.R,
+    pctI: pct.I,
+    pctS: pct.S,
+    pctE: pct.E,
+    overallAvg: Math.round((pct.R + pct.I + pct.S + pct.E) / 4),
+    strongest: `${strongest} (${DIMENSIONS[strongest].name})`,
+    opportunity: `${lowest} (${DIMENSIONS[lowest].name})`,
+    answers: quizAnswers
+  };
+
+  // Persist locally
+  const list = getAllResponses();
+  list.push(submission);
+  saveResponses(list);
+
+  // Sync to Google Sheets
+  postToGoogleSheet(submission);
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ==========================================
+// 4. GOOGLE SHEETS INTEGRATION
+// ==========================================
+async function postToGoogleSheet(data) {
+  const url = getStoredWebhook();
+  const badge = $('syncStatusIndicator');
+  const txt = $('syncText');
+
+  if (!url) {
+    if (badge) {
+      badge.className = 'sync-badge';
+      txt.textContent = 'Saved to local session (Sheet sync not configured)';
+    }
+    return;
+  }
+
+  if (badge) {
+    badge.className = 'sync-badge pending';
+    txt.textContent = 'Syncing to Google Sheets...';
+  }
+
+  try {
+    // Mode no-cors for Google Apps Script Web App endpoints
+    await fetch(url, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    if (badge) {
+      badge.className = 'sync-badge synced';
+      txt.textContent = 'Synced in real-time to Google Sheet';
+    }
+  } catch (err) {
+    console.warn("Sheet sync error, queued locally:", err);
+    // Queue offline sync
+    let pending = [];
+    try { pending = JSON.parse(localStorage.getItem(STORAGE_KEYS.PENDING_SYNC)) || []; } catch(e){}
+    pending.push(data);
+    localStorage.setItem(STORAGE_KEYS.PENDING_SYNC, JSON.stringify(pending));
+
+    if (badge) {
+      badge.className = 'sync-badge';
+      txt.textContent = 'Saved locally (Will sync when online)';
+    }
+  }
+}
+
+// ==========================================
+// 5. FACILITATOR DASHBOARD & PASSWORD AUTH
+// ==========================================
+function promptFacilitator() {
+  $('passwordModal').classList.remove('hidden');
+  $('facilitatorPasswordInput').value = '';
+  $('passwordError').style.display = 'none';
+  $('facilitatorPasswordInput').focus();
+}
+
+function handlePasswordSubmit(e) {
+  e.preventDefault();
+  const entered = $('facilitatorPasswordInput').value;
+  const target = getStoredPassword();
+
+  if (entered === target) {
+    $('passwordModal').classList.add('hidden');
+    openFacilitatorDashboard();
+  } else {
+    $('passwordError').style.display = 'block';
+  }
+}
+
+function openFacilitatorDashboard() {
+  $('introView').classList.add('hidden');
+  $('quizView').classList.add('hidden');
+  $('resultView').classList.add('hidden');
+  $('facilitatorView').classList.remove('hidden');
+
+  populateCohortFilter();
+  renderFacilitatorData();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function populateCohortFilter() {
+  const select = $('cohortFilterSelect');
+  const responses = getAllResponses();
+  const cohorts = new Set();
+  
+  cohorts.add("General");
+  responses.forEach(r => {
+    if (r.cohort) cohorts.add(r.cohort);
+  });
+
+  const currentVal = select.value || "ALL";
+  select.innerHTML = '<option value="ALL">All Cohorts (Overall)</option>';
+  cohorts.forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c;
+    opt.textContent = c;
+    select.appendChild(opt);
+  });
+  select.value = currentVal;
+}
+
+function renderFacilitatorData() {
+  const filter = $('cohortFilterSelect').value;
+  const all = getAllResponses();
+  const filtered = (filter === 'ALL') ? all : all.filter(r => r.cohort === filter);
+
+  // Update Stats
+  $('statParticipants').textContent = filtered.length;
+
+  if (filtered.length === 0) {
+    $('statAvgScore').textContent = '0%';
+    $('statTopDim').textContent = '-';
+    $('statGrowthDim').textContent = '-';
+    $('collectiveDimensionBars').innerHTML = '<div style="color:var(--muted);padding:14px 0;">No participants have completed the assessment for this cohort yet.</div>';
+    $('distributionContainer').innerHTML = '<div style="color:var(--muted);">No data.</div>';
+    if ($('collectiveInsightPanel')) {
+      $('collectiveInsightPanel').innerHTML = '<p style="color:var(--muted)">Collective reflections will automatically appear once participants complete the reflection.</p>';
+    }
+    if ($('facilitatorDebriefContent')) {
+      $('facilitatorDebriefContent').innerHTML = '<p style="color:var(--muted)">Facilitator debrief notes will appear once data is submitted.</p>';
+    }
+    renderRosterTable();
+    return;
+  }
+
+  // Calculate Averages
+  const sum = { R: 0, I: 0, S: 0, E: 0 };
+  const levelCounts = {
+    'Strong Growth': 0,
+    'Usually Adaptive': 0,
+    'Depends on the Situation': 0,
+    'More Cautious Under Pressure': 0
+  };
+
+  filtered.forEach(r => {
+    sum.R += r.pctR || 0;
+    sum.I += r.pctI || 0;
+    sum.S += r.pctS || 0;
+    sum.E += r.pctE || 0;
+
+    const overallPct = Math.round((r.pctR + r.pctI + r.pctS + r.pctE) / 4);
+    const lvl = levelFromPct(overallPct).label;
+    if (levelCounts[lvl] !== undefined) levelCounts[lvl]++;
+  });
+
+  const avg = {
+    R: Math.round(sum.R / filtered.length),
+    I: Math.round(sum.I / filtered.length),
+    S: Math.round(sum.S / filtered.length),
+    E: Math.round(sum.E / filtered.length)
+  };
+  const overallAvg = Math.round((avg.R + avg.I + avg.S + avg.E) / 4);
+  $('statAvgScore').textContent = `${overallAvg}%`;
+
+  const sorted = Object.entries(avg).sort((a, b) => b[1] - a[1]);
+  const topDim = sorted[0][0];
+  const lowDim = sorted[sorted.length - 1][0];
+
+  $('statTopDim').textContent = `${topDim} (${avg[topDim]}%)`;
+  $('statGrowthDim').textContent = `${lowDim} (${avg[lowDim]}%)`;
+
+  // Render Dimension Bars (Audience View)
+  const barsContainer = $('collectiveDimensionBars');
+  barsContainer.innerHTML = '';
+  Object.keys(DIMENSIONS).forEach(d => {
+    const dimAvg = avg[d];
+    const lvl = levelFromPct(dimAvg);
+    const row = document.createElement('div');
+    row.className = 'collective-dim-row';
+    row.innerHTML = `
+      <div style="font-weight:700;display:flex;align-items:center;gap:6px">
+        <span class="badge" style="width:26px;height:26px;font-size:13px;background:${DIMENSIONS[d].color}">${d}</span>
+        <span style="font-size:14px">${DIMENSIONS[d].name}</span>
+      </div>
+      <div class="dim-bar-wrap">
+        <div class="bar" style="margin:0;height:12px;"><div style="width:${dimAvg}%;background:${DIMENSIONS[d].color}"></div></div>
+      </div>
+      <div style="text-align:right">
+        <strong style="color:var(--brand);font-size:16px">${dimAvg}%</strong>
+        <div style="font-size:11px;color:var(--muted)">${lvl.label}</div>
+      </div>
+    `;
+    barsContainer.appendChild(row);
+  });
+
+  // Render Distribution Breakdown with clear developmental meaning
+  const distContainer = $('distributionContainer');
+  distContainer.innerHTML = '';
+  Object.values(RESPONSE_LABELS).forEach(item => {
+    const count = levelCounts[item.label] || 0;
+    const pct = Math.round((count / filtered.length) * 100);
+    const box = document.createElement('div');
+    box.style.padding = '10px 12px';
+    box.style.background = '#f8fafc';
+    box.style.borderRadius = '10px';
+    box.style.border = '1px solid var(--line)';
+    box.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;">
+        <span class="level-tag ${item.cls}">${item.label} (${count} pax)</span>
+        <span style="font-weight:700;color:var(--brand);font-size:14px;">${pct}%</span>
+      </div>
+      <div style="font-size:12px;color:var(--ink-light);line-height:1.35;">${item.desc}</div>
+    `;
+    distContainer.appendChild(box);
+  });
+
+  // Render Audience-Facing Collective Insight
+  if ($('collectiveInsightPanel')) {
+    $('collectiveInsightPanel').innerHTML = `
+      <div style="margin-bottom:14px">
+        <div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#059669;margin-bottom:4px;">
+          Collective Strength
+        </div>
+        <p style="margin:0;font-size:15px;line-height:1.5;color:var(--ink);">
+          "${DIMENSIONS[topDim].collectiveStrength}"
+        </p>
+      </div>
+
+      <div style="margin-bottom:14px">
+        <div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#d97706;margin-bottom:4px;">
+          Growth Opportunity
+        </div>
+        <p style="margin:0;font-size:15px;line-height:1.5;color:var(--ink);">
+          "${DIMENSIONS[lowDim].collectiveGrowth}"
+        </p>
+      </div>
+
+      <div style="background:#fdf2f4;padding:12px 14px;border-radius:10px;border-left:3px solid var(--brand);">
+        <div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--brand);margin-bottom:4px;">
+          Reflection Question
+        </div>
+        <p style="margin:0;font-size:15px;font-weight:600;line-height:1.45;color:var(--brand-dark);">
+          "${DIMENSIONS[lowDim].collectivePrompt}"
+        </p>
+      </div>
+    `;
+  }
+
+  // Render Facilitator-Only Debrief Guide (Private tab)
+  if ($('facilitatorDebriefContent')) {
+    $('facilitatorDebriefContent').innerHTML = `
+      <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;">
+        <h4 style="margin:0 0 8px;color:var(--brand-dark);">1. Group Mindset Dynamics & Interpretation Notes</h4>
+        <p style="margin:0 0 10px;font-size:14px;line-height:1.5;">
+          The cohort shows its greatest collective confidence in <strong>${DIMENSIONS[topDim].name} (${avg[topDim]}%)</strong>, while <strong>${DIMENSIONS[lowDim].name} (${avg[lowDim]}%)</strong> represents the biggest opportunity for intentional practice.
+        </p>
+        <p style="margin:0;font-size:13px;color:var(--muted);line-height:1.5;">
+          <strong>Caution Note:</strong> Avoid treating lower percentages as "underperformance" or team flaws. The RISE Profile reflects situational comfort zones under pressure. Frame this as a shared habit that the group can consciously expand together.
+        </p>
+      </div>
+
+      <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;">
+        <h4 style="margin:0 0 8px;color:var(--brand-dark);">2. Suggested 3-Step Debrief Sequence</h4>
+        <ol style="margin:0;padding-left:18px;font-size:13px;line-height:1.6;color:var(--ink);">
+          <li><strong>Celebrate & Anchor:</strong> Ask the group: <em>"Where do we see our collective strength (${DIMENSIONS[topDim].name}) showing up in our daily collaboration?"</em></li>
+          <li><strong>Normalize the Stretch:</strong> Explain that growth requires psychological safety: <em>"Why is it natural for teams to hesitate around ${DIMENSIONS[lowDim].name}?"</em></li>
+          <li><strong>Actionable Commitment:</strong> Transition into the core reflection question: <em>"${DIMENSIONS[lowDim].collectivePrompt}"</em></li>
+        </ol>
+      </div>
+
+      <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;">
+        <h4 style="margin:0 0 8px;color:var(--brand-dark);">3. Micro-Exercise for Breakout Pairs (7 Minutes)</h4>
+        <p style="margin:0;font-size:13px;line-height:1.5;color:var(--ink);">
+          Have participants turn to a partner and share: <em>"What is one low-risk situation at work this month where you could try a new approach or ask for early feedback before everything is perfect?"</em>
+        </p>
+      </div>
+    `;
+  }
+
+  renderRosterTable();
+}
+
+function renderRosterTable() {
+  const filter = $('cohortFilterSelect').value;
+  const query = ($('rosterSearchInput').value || '').toLowerCase();
+  const all = getAllResponses();
+  let filtered = (filter === 'ALL') ? all : all.filter(r => r.cohort === filter);
+
+  if (query) {
+    filtered = filtered.filter(r => (r.name || '').toLowerCase().includes(query));
+  }
+
+  $('rosterCount').textContent = `${filtered.length} of ${all.length} responses`;
+  const tbody = $('rosterTbody');
+  tbody.innerHTML = '';
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;padding:20px;color:var(--muted)">No matching participant records found.</td></tr>';
+    return;
+  }
+
+  filtered.slice().reverse().forEach(r => {
+    const tr = document.createElement('tr');
+    const timeStr = r.timestamp ? new Date(r.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '-';
+    tr.innerHTML = `
+      <td><strong>${escapeHtml(r.name || 'Anonymous')}</strong></td>
+      <td><span style="background:#f1f5f9;padding:2px 8px;border-radius:6px;font-size:12px">${escapeHtml(r.cohort || 'General')}</span></td>
+      <td><strong>${r.pctR}%</strong></td>
+      <td><strong>${r.pctI}%</strong></td>
+      <td><strong>${r.pctS}%</strong></td>
+      <td><strong>${r.pctE}%</strong></td>
+      <td><span class="level-tag ${levelFromPct(r.overallAvg).cls}">${r.overallAvg}%</span></td>
+      <td style="font-size:12px;color:var(--brand);font-weight:600">${escapeHtml(r.strongest || '')}</td>
+      <td style="font-size:12px;color:var(--muted)">${timeStr}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function escapeHtml(str) {
+  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+// ==========================================
+// 6. QR CODE GENERATION & SHARING
+// ==========================================
+function openQrModal() {
+  const activeCohort = $('cohortFilterSelect') ? $('cohortFilterSelect').value : currentCohort;
+  const targetCohort = (activeCohort === 'ALL' || !activeCohort) ? ($('cohortInput').value.trim() || 'General') : activeCohort;
+  
+  $('qrCohortBadge').textContent = targetCohort;
+  $('qrModal').classList.remove('hidden');
+
+  // Detect if running on file:// or localhost (which phones cannot scan)
+  const isLocal = window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  if ($('qrProtocolNotice')) {
+    $('qrProtocolNotice').style.display = isLocal ? 'block' : 'none';
+  }
+
+  // Check if facilitator configured a custom public base URL (e.g. GitHub Pages)
+  const savedCustomUrl = localStorage.getItem('rise_custom_public_url') || '';
+  if ($('customShareUrlInput') && savedCustomUrl) {
+    $('customShareUrlInput').value = savedCustomUrl;
+  }
+
+  generateQrCodeForCohort(targetCohort);
+}
+
+function generateQrCodeForCohort(cohort) {
+  let shareUrl = '';
+  const customBase = ($('customShareUrlInput') ? $('customShareUrlInput').value.trim() : '') || localStorage.getItem('rise_custom_public_url') || '';
+
+  if (customBase) {
+    try {
+      const parsed = new URL(customBase);
+      parsed.searchParams.set("cohort", cohort);
+      shareUrl = parsed.toString();
+    } catch(e) {
+      shareUrl = customBase + (customBase.includes('?') ? '&' : '?') + 'cohort=' + encodeURIComponent(cohort);
+    }
+  } else {
+    const url = new URL(window.location.href);
+    url.searchParams.set("cohort", cohort);
+    url.hash = "";
+    shareUrl = url.toString();
+  }
+
+  $('qrTargetUrl').textContent = shareUrl;
+
+  const qrContainer = $('qrcode');
+  qrContainer.innerHTML = '';
+  
+  if (typeof QRCode !== 'undefined') {
+    qrInstance = new QRCode(qrContainer, {
+      text: shareUrl,
+      width: 200,
+      height: 200,
+      colorDark: "#8f1232",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.M
+    });
+  } else {
+    qrContainer.innerHTML = '<div style="color:var(--muted);padding:20px;">QR Library Loading...</div>';
+  }
+}
+
+// ==========================================
+// 7. PRINTABLE GROUP REPORT GENERATOR
+// ==========================================
+function generatePrintableGroupReport() {
+  const filter = $('cohortFilterSelect').value;
+  const all = getAllResponses();
+  const cohortName = (filter === 'ALL') ? 'All Workshop Cohorts' : `Cohort: ${filter}`;
+  const data = (filter === 'ALL') ? all : all.filter(r => r.cohort === filter);
+
+  if (data.length === 0) {
+    alert("No participant responses available to generate a group report yet.");
+    return;
+  }
+
+  // Dimension computations
+  const sum = { R: 0, I: 0, S: 0, E: 0 };
+  data.forEach(r => {
+    sum.R += r.pctR || 0;
+    sum.I += r.pctI || 0;
+    sum.S += r.pctS || 0;
+    sum.E += r.pctE || 0;
+  });
+
+  const avg = {
+    R: Math.round(sum.R / data.length),
+    I: Math.round(sum.I / data.length),
+    S: Math.round(sum.S / data.length),
+    E: Math.round(sum.E / data.length)
+  };
+  const overallAvg = Math.round((avg.R + avg.I + avg.S + avg.E) / 4);
+  const sorted = Object.entries(avg).sort((a,b)=>b[1]-a[1]);
+  const strongest = sorted[0][0];
+  const lowest = sorted[sorted.length-1][0];
+
+  const content = $('groupReportContent');
+  content.innerHTML = `
+    <div class="report-header">
+      <div>
+        <div class="kicker">Facilitator Executive Summary</div>
+        <h1 class="report-title">RISE Profile Group Report</h1>
+        <div style="font-size:15px;color:var(--ink);font-weight:700;margin-top:4px">${escapeHtml(cohortName)}</div>
+      </div>
+      <div class="report-meta">
+        <div><strong>Date:</strong> ${new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+        <div><strong>Total Sample:</strong> ${data.length} Participants</div>
+      </div>
+    </div>
+
+    <div class="report-section">
+      <h3 style="color:var(--brand)">1. Collective Growth Mindset Baseline</h3>
+      <div class="report-grid-summary">
+        <div class="report-summary-box">
+          <div class="val">${overallAvg}%</div>
+          <div class="lbl">Cohort Mean</div>
+        </div>
+        <div class="report-summary-box">
+          <div class="val" style="color:#059669">${avg[strongest]}%</div>
+          <div class="lbl">Peak: ${strongest}</div>
+        </div>
+        <div class="report-summary-box">
+          <div class="val" style="color:#d97706">${avg[lowest]}%</div>
+          <div class="lbl">Growth: ${lowest}</div>
+        </div>
+        <div class="report-summary-box">
+          <div class="val">${data.length}</div>
+          <div class="lbl">Submissions</div>
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:20px;">
+        <h4 style="margin:0 0 12px">Dimension Averages Breakdown</h4>
+        ${Object.keys(DIMENSIONS).map(d => `
+          <div style="margin-bottom:10px">
+            <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:700;margin-bottom:4px;">
+              <span><strong>${d}</strong> - ${DIMENSIONS[d].name}</span>
+              <span style="color:var(--brand)">${avg[d]}% (${levelFromPct(avg[d]).label})</span>
+            </div>
+            <div class="bar" style="margin:0"><div style="width:${avg[d]}%;background:${DIMENSIONS[d].color}"></div></div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="report-section">
+      <h3 style="color:var(--brand)">2. Group Mindset Reflection & Discussion Guide</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div style="border:1px solid var(--line);border-radius:14px;padding:16px;background:#fcfcfc;">
+          <h4 style="margin-top:0;color:#065f46">Collective Strength: ${DIMENSIONS[strongest].name}</h4>
+          <p style="font-size:13px;line-height:1.5">${DIMENSIONS[strongest].collectiveStrength}</p>
+          <div style="font-size:12px;background:#e6f4ea;padding:8px 10px;border-radius:8px;color:#137333;">
+            <strong>Group Asset:</strong> Acknowledge this shared mindset strength during opening remarks to establish psychological safety.
+          </div>
+        </div>
+        <div style="border:1px solid var(--line);border-radius:14px;padding:16px;background:#fcfcfc;">
+          <h4 style="margin-top:0;color:#b45309">Growth Opportunity: ${DIMENSIONS[lowest].name}</h4>
+          <p style="font-size:13px;line-height:1.5">${DIMENSIONS[lowest].collectiveGrowth}</p>
+          <div style="font-size:12px;background:#fef7e0;padding:8px 10px;border-radius:8px;color:#b06000;">
+            <strong>Reflection Question:</strong> "${DIMENSIONS[lowest].collectivePrompt}"
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="report-section" style="break-before:page;page-break-before:always;margin-top:30px;">
+      <h3 style="color:var(--brand)">3. Cohort Participant Matrix</h3>
+      <div class="table-wrap">
+        <table class="roster" style="font-size:12px">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Participant</th>
+              <th>Cohort</th>
+              <th>R %</th>
+              <th>I %</th>
+              <th>S %</th>
+              <th>E %</th>
+              <th>Mean</th>
+              <th>Strongest Tendency</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${data.map((r, i) => `
+              <tr>
+                <td>${i + 1}</td>
+                <td><strong>${escapeHtml(r.name || 'Anonymous')}</strong></td>
+                <td>${escapeHtml(r.cohort || 'General')}</td>
+                <td>${r.pctR}%</td>
+                <td>${r.pctI}%</td>
+                <td>${r.pctS}%</td>
+                <td>${r.pctE}%</td>
+                <td><strong>${r.overallAvg}%</strong></td>
+                <td>${escapeHtml(r.strongest || '')}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+      <p class="footer-note" style="margin-top:16px">Generated by RISE Profile Growth Mindset Reflection Tool. Confidential - For workshop facilitation use only.</p>
+    </div>
+  `;
+
+  $('groupReportModal').classList.remove('hidden');
+}
+
+// ==========================================
+// 8. CSV EXPORT & DEMO DATA GENERATOR
+// ==========================================
+function exportToCsv() {
+  const filter = $('cohortFilterSelect').value;
+  const all = getAllResponses();
+  const data = (filter === 'ALL') ? all : all.filter(r => r.cohort === filter);
+
+  if (data.length === 0) {
+    alert("No data available to export.");
+    return;
+  }
+
+  let csv = "ID,Timestamp,Name,Cohort,R_Score_Pct,I_Score_Pct,S_Score_Pct,E_Score_Pct,Overall_Avg,Strongest_Dimension,Opportunity_Dimension\n";
+  data.forEach(r => {
+    const row = [
+      r.id,
+      `"${r.timestamp || ''}"`,
+      `"${(r.name || 'Anonymous').replace(/"/g, '""')}"`,
+      `"${(r.cohort || 'General').replace(/"/g, '""')}"`,
+      r.pctR,
+      r.pctI,
+      r.pctS,
+      r.pctE,
+      r.overallAvg,
+      `"${(r.strongest || '').replace(/"/g, '""')}"`,
+      `"${(r.opportunity || '').replace(/"/g, '""')}"`
+    ];
+    csv += row.join(",") + "\n";
+  });
+
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `RISE_Profile_${filter}_${new Date().toISOString().slice(0,10)}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+function generateDemoData() {
+  const sampleNames = ["Sarah Lim", "Marcus Lee", "Priya Nair", "David Chen", "Aisha Al-Mansoor", "James Wilson", "Elena Rostova", "Daniel Kim", "Kenji Sato", "Fatima Zahra", "Gabriel Santos", "Chloe Dupont"];
+  const cohorts = ["Leadership-Oct-2026", "Leadership-Oct-2026", "Engineering-AllHands", "Leadership-Oct-2026"];
+
+  const current = getAllResponses();
+  for (let i = 0; i < 12; i++) {
+    const r = Math.floor(Math.random() * 35) + 65;
+    const item = {
+      id: "demo_" + Date.now() + "_" + i,
+      timestamp: new Date(Date.now() - (12 - i) * 600000).toISOString(),
+      name: sampleNames[i],
+      cohort: cohorts[i % cohorts.length],
+      pctR: Math.min(100, Math.floor(Math.random() * 40) + 60),
+      pctI: Math.min(100, Math.floor(Math.random() * 40) + 55),
+      pctS: Math.min(100, Math.floor(Math.random() * 35) + 65),
+      pctE: Math.min(100, Math.floor(Math.random() * 45) + 50)
+    };
+    item.overallAvg = Math.round((item.pctR + item.pctI + item.pctS + item.pctE) / 4);
+    item.strongest = "S (Stretch Through Challenge)";
+    item.opportunity = "E (Experimentation & Change)";
+    current.push(item);
+  }
+
+  saveResponses(current);
+  populateCohortFilter();
+  renderFacilitatorData();
+  alert("Added 12 realistic participant responses! Check the Collective Analysis & Roster.");
+}
+
+// ==========================================
+// 9. EVENT LISTENERS & WIRING
+// ==========================================
+$('startBtn').onclick = startQuiz;
+$('nextBtn').onclick = nextQuestion;
+$('backBtn').onclick = backQuestion;
+$('restartBtn').onclick = showIntro;
+$('printBtn').onclick = () => window.print();
+
+$('facilitatorBtn').onclick = promptFacilitator;
+$('exitFacilitatorBtn').onclick = showIntro;
+$('openQrModalBtn').onclick = openQrModal;
+$('qrQuickBtn').onclick = openQrModal;
+$('printGroupReportBtn').onclick = generatePrintableGroupReport;
+$('exportCsvBtn').onclick = exportToCsv;
+$('generateDemoDataBtn').onclick = generateDemoData;
+
+// Tab switcher in Facilitator
+document.querySelectorAll('.tabs .tab').forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll('.tabs .tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.add('hidden'));
+    btn.classList.add('active');
+    const target = $(btn.getAttribute('data-tab'));
+    if (target) target.classList.remove('hidden');
+  };
+});
+
+// Settings Handlers
+$('saveSheetUrlBtn').onclick = () => {
+  const url = $('sheetWebhookUrl').value.trim();
+  localStorage.setItem(STORAGE_KEYS.WEBHOOK, url);
+  $('sheetTestResult').innerHTML = '<span style="color:var(--success)">Saved successfully!</span>';
+};
+
+$('testSheetBtn').onclick = async () => {
+  const url = $('sheetWebhookUrl').value.trim();
+  if (!url) {
+    alert("Please enter a Google Apps Script Web App URL first.");
+    return;
+  }
+  $('sheetTestResult').innerHTML = '<span style="color:var(--brand)">Pinging endpoint...</span>';
+  try {
+    await fetch(url, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        timestamp: new Date().toISOString(),
+        name: "Test Facilitator Ping",
+        cohort: "System-Verification",
+        percentages: { R: 100, I: 100, S: 100, E: 100 },
+        pctR: 100, pctI: 100, pctS: 100, pctE: 100,
+        strongest: "Verification",
+        opportunity: "None"
+      })
+    });
+    $('sheetTestResult').innerHTML = '<span style="color:var(--success)">Test webhook payload sent! Check your Google Sheet to verify the new row.</span>';
+  } catch (err) {
+    $('sheetTestResult').innerHTML = `<span style="color:var(--danger)">Error: ${err.message}</span>`;
+  }
+};
+
+$('savePassBtn').onclick = () => {
+  const p = $('newAdminPass').value.trim();
+  if (!p) {
+    alert("Password cannot be blank.");
+    return;
+  }
+  localStorage.setItem(STORAGE_KEYS.PASSWORD, p);
+  $('newAdminPass').value = '';
+  alert("Facilitator password updated successfully!");
+};
+
+$('clearAllDataBtn').onclick = () => {
+  if (confirm("Are you sure you want to clear all participant responses from this device? This cannot be undone.")) {
+    saveResponses([]);
+    populateCohortFilter();
+    renderFacilitatorData();
+    alert("All session data cleared.");
+  }
+};
+
+$('copyShareLinkBtn').onclick = () => {
+  const url = $('qrTargetUrl').textContent;
+  navigator.clipboard.writeText(url).then(() => {
+    alert("Share link copied to clipboard!");
+  }).catch(() => {
+    prompt("Copy this URL:", url);
+  });
+};
+
+if ($('applyCustomUrlBtn')) {
+  $('applyCustomUrlBtn').onclick = () => {
+    const raw = $('customShareUrlInput').value.trim();
+    if (raw) {
+      localStorage.setItem('rise_custom_public_url', raw);
+    } else {
+      localStorage.removeItem('rise_custom_public_url');
+    }
+    const activeCohort = $('cohortFilterSelect') ? $('cohortFilterSelect').value : currentCohort;
+    const targetCohort = (activeCohort === 'ALL' || !activeCohort) ? ($('cohortInput').value.trim() || 'General') : activeCohort;
+    generateQrCodeForCohort(targetCohort);
+    alert("QR code updated with your live link!");
+  };
+}
+
+$('copyAppsScriptBtn').onclick = () => {
+  const scriptCode = `function doPost(e) {
+  var lock = LockService.getScriptLock();
+  lock.tryLock(10000);
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow(["Timestamp","Participant Name","Cohort / Session","R %","I %","S %","E %","Strongest","Opportunity"]);
+      sheet.getRange(1, 1, 1, 9).setFontWeight("bold").setBackground("#f7e8ed").setFontColor("#8f1232");
+      sheet.setFrozenRows(1);
+    }
+    var data = (e.postData && e.postData.contents) ? JSON.parse(e.postData.contents) : e.parameter;
+    sheet.appendRow([
+      data.timestamp || new Date().toISOString(),
+      data.name || "Anonymous",
+      data.cohort || "General",
+      data.pctR || 0,
+      data.pctI || 0,
+      data.pctS || 0,
+      data.pctE || 0,
+      data.strongest || "",
+      data.opportunity || ""
+    ]);
+    return ContentService.createTextOutput(JSON.stringify({status:"success"})).setMimeType(ContentService.MimeType.JSON);
+  } finally {
+    lock.releaseLock();
+  }
+}`;
+  navigator.clipboard.writeText(scriptCode).then(() => {
+    alert("Google Apps Script code copied to clipboard!");
+  });
+};
+</script>
+</body>
+</html>

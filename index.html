@@ -830,6 +830,13 @@ table.roster tr:hover td { background: #fafafa; }
       </div>
       <div>
         <label style="margin-bottom:4px">&nbsp;</label>
+        <button class="primary btn-sm" id="fetchFromSheetBtn" style="background:#059669;" title="Fetch all participant responses from Google Sheet">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+          <span id="fetchSheetBtnText">Sync from Sheet</span>
+        </button>
+      </div>
+      <div>
+        <label style="margin-bottom:4px">&nbsp;</label>
         <button class="secondary btn-sm" id="exportCsvBtn">Export CSV</button>
       </div>
     </div>
@@ -1617,7 +1624,39 @@ function openFacilitatorDashboard() {
 
   populateCohortFilter();
   renderFacilitatorData();
+  // Auto-fetch latest responses from Google Sheet if configured
+  fetchResponsesFromSheet(true);
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+async function fetchResponsesFromSheet(silent = false) {
+  const url = getStoredWebhook();
+  const btn = $('fetchSheetBtnText');
+  if (!url) return;
+
+  if (btn && !silent) btn.textContent = 'Syncing...';
+
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+
+    if (data && data.records && Array.isArray(data.records)) {
+      if (data.records.length > 0) {
+        // Merge or replace with Google Sheet truth
+        saveResponses(data.records);
+        populateCohortFilter();
+        renderFacilitatorData();
+        if (!silent) alert(`Successfully synced ${data.records.length} participant responses from Google Sheet!`);
+      } else if (!silent) {
+        alert("Google Sheet connected, but it has no participant responses yet.");
+      }
+    }
+  } catch (err) {
+    console.warn("Could not fetch records from Google Sheet:", err);
+    if (!silent) alert("Note: Please make sure your Google Apps Script is updated with the latest code to support reading responses. See Settings tab for instructions.");
+  } finally {
+    if (btn) btn.textContent = 'Sync from Sheet';
+  }
 }
 
 function populateCohortFilter() {
@@ -2237,6 +2276,10 @@ if ($('applyCustomUrlBtn')) {
   };
 }
 
+if ($('fetchFromSheetBtn')) {
+  $('fetchFromSheetBtn').onclick = () => fetchResponsesFromSheet(false);
+}
+
 $('copyAppsScriptBtn').onclick = () => {
   const scriptCode = `function doPost(e) {
   var lock = LockService.getScriptLock();
@@ -2244,29 +2287,55 @@ $('copyAppsScriptBtn').onclick = () => {
   try {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
     if (sheet.getLastRow() === 0) {
-      sheet.appendRow(["Timestamp","Participant Name","Cohort / Session","R %","I %","S %","E %","Strongest","Opportunity"]);
-      sheet.getRange(1, 1, 1, 9).setFontWeight("bold").setBackground("#f7e8ed").setFontColor("#8f1232");
+      sheet.appendRow(["Timestamp","Participant Name","Cohort / Session","R %","I %","S %","E %","Overall %","Strongest","Opportunity"]);
+      sheet.getRange(1, 1, 1, 10).setFontWeight("bold").setBackground("#f7e8ed").setFontColor("#8f1232");
       sheet.setFrozenRows(1);
     }
     var data = (e.postData && e.postData.contents) ? JSON.parse(e.postData.contents) : e.parameter;
+    var r = Number(data.pctR || 0), i = Number(data.pctI || 0), s = Number(data.pctS || 0), ec = Number(data.pctE || 0);
     sheet.appendRow([
       data.timestamp || new Date().toISOString(),
       data.name || "Anonymous",
       data.cohort || "General",
-      data.pctR || 0,
-      data.pctI || 0,
-      data.pctS || 0,
-      data.pctE || 0,
-      data.strongest || "",
-      data.opportunity || ""
+      r, i, s, ec, Math.round((r + i + s + ec)/4),
+      data.strongest || "", data.opportunity || ""
     ]);
     return ContentService.createTextOutput(JSON.stringify({status:"success"})).setMimeType(ContentService.MimeType.JSON);
-  } finally {
-    lock.releaseLock();
+  } finally { lock.releaseLock(); }
+}
+
+function doGet(e) {
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var lastRow = sheet.getLastRow();
+    if (lastRow <= 1) {
+      return ContentService.createTextOutput(JSON.stringify({status:"success",count:0,records:[]})).setMimeType(ContentService.MimeType.JSON);
+    }
+    var values = sheet.getRange(2, 1, lastRow - 1, 10).getValues();
+    var records = [];
+    for (var idx = 0; idx < values.length; idx++) {
+      var row = values[idx];
+      if (!row[0] && !row[1]) continue;
+      var r = Number(row[3])||0, i = Number(row[4])||0, s = Number(row[5])||0, ec = Number(row[6])||0;
+      records.push({
+        id: "sheet_" + (idx+2),
+        timestamp: row[0] ? new Date(row[0]).toISOString() : new Date().toISOString(),
+        name: String(row[1] || "Anonymous"),
+        cohort: String(row[2] || "General"),
+        pctR: r, pctI: i, pctS: s, pctE: ec,
+        percentages: { R: r, I: i, S: s, E: ec },
+        overallAvg: Number(row[7]) || Math.round((r+i+s+ec)/4),
+        strongest: String(row[8] || ""),
+        opportunity: String(row[9] || "")
+      });
+    }
+    return ContentService.createTextOutput(JSON.stringify({status:"success",count:records.length,records:records})).setMimeType(ContentService.MimeType.JSON);
+  } catch(err) {
+    return ContentService.createTextOutput(JSON.stringify({status:"error",message:err.toString()})).setMimeType(ContentService.MimeType.JSON);
   }
 }`;
   navigator.clipboard.writeText(scriptCode).then(() => {
-    alert("Google Apps Script code copied to clipboard!");
+    alert("Updated Google Apps Script code copied to clipboard!");
   });
 };
 </script>
